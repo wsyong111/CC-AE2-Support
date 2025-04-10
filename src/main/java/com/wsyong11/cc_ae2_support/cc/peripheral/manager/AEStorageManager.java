@@ -23,7 +23,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
-// TODO: 2025/4/3 Lua Document
 public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 	public AEStorageManager(@Nonnull IManagedGridNode node) {
 		super(node);
@@ -41,25 +40,29 @@ public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 		return manager == null ? null : manager.getInventory();
 	}
 
-	@Nonnull
+	@Nullable
 	@LuaFunction
-	public TypeCount getTypeCount() {
-		MEStorage inventory = this.getInventory();
-		if (inventory == null) return new TypeCount(-1, -1);
+	public Map<String, Object> getTypeCount() {
+		Map<String, Object> result = new HashMap<>();
 
 		int item = 0;
 		int fluid = 0;
 
-		for (Object2LongMap.Entry<AEKey> entry : inventory.getAvailableStacks()) {
-			AEKey key = entry.getKey();
-			if (AEItemKey.is(key)) item++;
-			if (AEFluidKey.is(key)) fluid++;
+		MEStorage inventory = this.getInventory();
+		if (inventory != null) {
+
+			for (Object2LongMap.Entry<AEKey> entry : inventory.getAvailableStacks()) {
+				AEKey key = entry.getKey();
+				if (AEItemKey.is(key)) item++;
+				if (AEFluidKey.is(key)) fluid++;
+			}
 		}
 
-		return new TypeCount(item, fluid);
+		result.put("item", item);
+		result.put("fluid", fluid);
+		return result;
 	}
 
-	// TODO: 2025/4/1 Get Item Detail from item id
 	@Nullable
 	@LuaFunction
 	public Map<String, List<ItemDetail>> getDetails() {
@@ -99,7 +102,7 @@ public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 	}
 
 	@LuaFunction
-	public long getFluidCountMb(@Nonnull String id) throws LuaException {
+	public long getFluidAmountMb(@Nonnull String id) throws LuaException {
 		MEStorage inventory = this.getInventory();
 		if (inventory == null) return -1L;
 
@@ -114,31 +117,6 @@ public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 
 		KeyCounter keyCounter = inventory.getAvailableStacks();
 		return keyCounter.get(AEFluidKey.of(fluid));
-	}
-
-	public static class TypeCount {
-		private final int itemCount;
-		private final int fluidCount;
-
-		public TypeCount(int itemCount, int fluidCount) {
-			this.itemCount = itemCount;
-			this.fluidCount = fluidCount;
-		}
-
-		@LuaFunction
-		public int getItem() {
-			return this.itemCount;
-		}
-
-		@LuaFunction
-		public int getFluid() {
-			return this.fluidCount;
-		}
-
-		@LuaFunction
-		public boolean isAvailable() {
-			return this.itemCount >= 0 && this.fluidCount >= 0;
-		}
 	}
 
 	public static class ItemDetail {
@@ -170,12 +148,6 @@ public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 		@LuaFunction
 		public boolean isFluid() {
 			return AEFluidKey.is(this.key);
-		}
-
-		@Nonnull
-		@LuaFunction
-		public String getDisplayName() {
-			return this.key.getDisplayName().getString();
 		}
 
 		@Nonnull

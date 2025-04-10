@@ -5,10 +5,7 @@ import appeng.api.networking.IGridNode;
 import appeng.api.networking.IManagedGridNode;
 import appeng.api.networking.crafting.*;
 import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.KeyCounter;
+import appeng.api.stacks.*;
 import com.mojang.logging.LogUtils;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
@@ -29,7 +26,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.stream.StreamSupport;
 
-// TODO: 2025/4/3 Lua Document
 public class AECraftingManager extends LuaManagerInterface<ICraftingService> {
 	private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -176,6 +172,7 @@ public class AECraftingManager extends LuaManagerInterface<ICraftingService> {
 			                    .toList();
 		}
 
+		@Nonnull
 		@LuaFunction
 		public CraftingResult start() throws LuaException {
 			if (!this.checkFutureDone()) throw new LuaException("Crafting plan doesn't calculate complete", 2);
@@ -282,13 +279,9 @@ public class AECraftingManager extends LuaManagerInterface<ICraftingService> {
 
 			@Nonnull
 			@LuaFunction
-			public String getCraftingItemId() {
-				return this.status.crafting().what().getId().toString();
-			}
-
-			@LuaFunction
-			public long getCraftAmount() {
-				return this.status.crafting().amount();
+			public AEStorageManager.ItemDetail getCraftingItem() {
+				GenericStack craftingItem = this.status.crafting();
+				return new AEStorageManager.ItemDetail(craftingItem.what(), craftingItem.amount());
 			}
 
 			@LuaFunction
