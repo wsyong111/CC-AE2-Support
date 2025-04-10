@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.wsyong11.cc_ae2_support.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"refmap": "cc_ae2_support.mixins.refmap.json",
+	"mixins": [
+	],
+	"client": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

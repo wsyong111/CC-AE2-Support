@@ -1,0 +1,31 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"texture": "cc_ae2_support:part/computer_interface_has_channel"
+	},
+	"elements": [
+		{
+			"from": [2, 2, 2],
+			"to": [14, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 2, 0]},
+			"faces": {
+				"east": {"uv": [0, 0, 0, 12], "texture": "#texture"},
+				"south": {"uv": [0, 0, 12, 12], "texture": "#texture"},
+				"west": {"uv": [0, 0, 0, 12], "texture": "#texture"},
+				"up": {"uv": [12, 0, 0, 0], "texture": "#texture"},
+				"down": {"uv": [12, 0, 0, 0], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [5, 5, 2],
+			"to": [11, 11, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 2, 2]},
+			"faces": {
+				"east": {"uv": [12, 0, 14, 6], "rotation": 180, "texture": "#texture"},
+				"west": {"uv": [12, 0, 14, 6], "texture": "#texture"},
+				"up": {"uv": [14, 6, 12, 0], "rotation": 270, "texture": "#texture"},
+				"down": {"uv": [12, 6, 14, 0], "rotation": 270, "texture": "#texture"}
+			}
+		}
+	]
+}

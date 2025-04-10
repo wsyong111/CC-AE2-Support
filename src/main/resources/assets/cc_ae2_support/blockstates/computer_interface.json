@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"status=off": {
+			"model": "cc_ae2_support:block/computer_interface/off"
+		},
+		"status=on": {
+			"model": "cc_ae2_support:block/computer_interface/on"
+		},
+		"status=has_channel": {
+			"model": "cc_ae2_support:block/computer_interface/has_channel"
+		}
+	}
+}

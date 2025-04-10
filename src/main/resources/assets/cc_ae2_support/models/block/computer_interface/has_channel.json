@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cc_ae2_support:block/computer_interface_has_channel"
+  }
+}
