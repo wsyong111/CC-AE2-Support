@@ -9,4 +9,4 @@ This mod will add a Computer Interface block (and a panel variant) to your game,
 - Query network status
 
 ## Lua Api
-请查看 [API.md](https://github.com/wsyong111/CC-AE2-Support/blob/master/README.md)
+Please check [API.md](https://github.com/wsyong111/CC-AE2-Support/blob/master/README.md)
