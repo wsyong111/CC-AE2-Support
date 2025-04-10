@@ -19,8 +19,8 @@ local function craftItem(device, id, amount)
 
     if craftingRequest.isMissingItems() then
         return {
-            missItem = true,
-            missItems = craftingRequest.getMissingItems(),
+            missingItem = true,
+            missingItems = craftingRequest.getMissingItems(),
 			id = nil,
             cancel = function()
             end
@@ -33,8 +33,8 @@ local function craftItem(device, id, amount)
 		end
 
         return {
-            missItem = false,
-            missItems = {},
+            missingItem = false,
+            missingItems = {},
 			id = result.getId(),
             cancel = function()
 				result.cancel()

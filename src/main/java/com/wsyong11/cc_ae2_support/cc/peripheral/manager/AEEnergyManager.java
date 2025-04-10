@@ -9,7 +9,6 @@ import dan200.computercraft.api.lua.LuaFunction;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-// TODO: 2025/4/1 Lua Document
 public class AEEnergyManager extends LuaManagerInterface<IEnergyService> {
 	public AEEnergyManager(@Nonnull IManagedGridNode node) {
 		super(node);
@@ -18,7 +17,7 @@ public class AEEnergyManager extends LuaManagerInterface<IEnergyService> {
 	@Nullable
 	@Override
 	protected IEnergyService getManagerInstance(@Nonnull IGrid grid) {
-		return null;
+		return grid.getEnergyService();
 	}
 
 	@LuaFunction

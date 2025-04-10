@@ -15,7 +15,6 @@ import com.wsyong11.cc_ae2_support.cc.peripheral.ComputerInterfacePeripheral;
 
 import javax.annotation.Nonnull;
 
-// FIXME: 2025/4/8 Model display error
 public class ComputerInterfacePart extends BasePart implements IAENetworkObject {
 	private static final PartModel MODEL_ON = new PartModel(PartModelRegistry.COMPUTER_INTERFACE_BASE, PartModelRegistry.COMPUTER_INTERFACE_ON);
 	private static final PartModel MODEL_OFF = new PartModel(PartModelRegistry.COMPUTER_INTERFACE_BASE, PartModelRegistry.COMPUTER_INTERFACE_OFF);
