@@ -42,6 +42,7 @@ public class ComputerInterfacePeripheral implements IPeripheral {
 		return "ae_interface";
 	}
 
+	@LuaFunction
 	public void reset() {
 		LOGGER.debug("Reset");
 		this.energyManager.reset();

@@ -50,7 +50,6 @@ public class AEStorageManager extends LuaManagerInterface<IStorageService> {
 
 		MEStorage inventory = this.getInventory();
 		if (inventory != null) {
-
 			for (Object2LongMap.Entry<AEKey> entry : inventory.getAvailableStacks()) {
 				AEKey key = entry.getKey();
 				if (AEItemKey.is(key)) item++;

@@ -27,6 +27,7 @@ yellow-font {
 | `isActive()`              | `bool`                                 | Is the system online                                                                                                |
 | `isMissingChannel()`      | `bool`                                 | Is the current device missing available channels                                                                    |
 | `isPowered()`             | `bool`                                 | Is the current device powered on                                                                                    |
+| `reset()`                 | `nil`                                  | Reset interface state                                                                                               |
 
 ### Energy Manager
 
